@@ -2,7 +2,7 @@ import pytest
 
 from rover import exceptions
 from rover.models import Coordinate, Movement, Grid, Rover
-from rover.enums import CardinalDirection, RelativeDirection, MovementCommand
+from rover.enums import CardinalDirection, RotationCommand, MovementCommand
 
 
 class TestCoordinate:
@@ -92,11 +92,11 @@ class TestRover:
         with pytest.raises(ValueError):
             rover.cardinal_direction
 
-    @pytest.mark.parametrize('direction,angle', [
-        (RelativeDirection.L, 180),
-        (RelativeDirection.R, 0),
+    @pytest.mark.parametrize('command,angle', [
+        (RotationCommand.L, 180),
+        (RotationCommand.R, 0),
     ])
-    def test_rotate(self, direction, angle):
+    def test_rotate(self, command, angle):
         # Facing north
 
         rover = Rover(
@@ -105,7 +105,7 @@ class TestRover:
             coord=Coordinate(0, 0)
         )
 
-        rover.rotate(direction)
+        rover.rotate(command)
 
         assert rover.angle == angle
 

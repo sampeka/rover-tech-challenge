@@ -3,7 +3,7 @@ import uuid
 from dataclasses import dataclass
 
 from rover import exceptions
-from rover.enums import CardinalDirection, RelativeDirection, MovementCommand
+from rover.enums import CardinalDirection, RotationCommand, MovementCommand
 
 
 @dataclass
@@ -74,7 +74,7 @@ class Rover:
     def cardinal_direction(self) -> CardinalDirection:
         return CardinalDirection(self.angle)
 
-    def rotate(self, direction: RelativeDirection):
+    def rotate(self, direction: RotationCommand):
         self.angle = (self.angle - direction.value) % 360
 
     def move(self, command: MovementCommand, grid: Grid):

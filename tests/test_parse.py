@@ -1,7 +1,7 @@
 import pytest
 
 from rover import parse, exceptions
-from rover.enums import CardinalDirection, RelativeDirection, MovementCommand
+from rover.enums import CardinalDirection, RotationCommand, MovementCommand
 from rover.models import Coordinate, Rover, Grid
 
 
@@ -102,16 +102,16 @@ class TestParseRoverCommands:
         commands = parse.parse_rover_commands(input_)
 
         assert commands == [
-            RelativeDirection.L,
-            RelativeDirection.L,
+            RotationCommand.L,
+            RotationCommand.L,
             MovementCommand.M,
-            RelativeDirection.R,
+            RotationCommand.R,
             MovementCommand.M,
             MovementCommand.M,
             MovementCommand.M,
-            RelativeDirection.R,
+            RotationCommand.R,
             MovementCommand.M,
-            RelativeDirection.R,
+            RotationCommand.R,
             MovementCommand.M,
         ]
 

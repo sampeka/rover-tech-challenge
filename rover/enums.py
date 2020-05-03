@@ -11,7 +11,7 @@ class CardinalDirection(enum.Enum):
         return self.name
 
 
-class RelativeDirection(enum.Enum):
+class RotationCommand(enum.Enum):
     L = -90
     R = 90
 

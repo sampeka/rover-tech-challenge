@@ -2,7 +2,7 @@ from typing import List, Union, Generator
 
 from rover import exceptions
 from rover.models import Grid, Rover, Coordinate
-from rover.enums import MovementCommand, RelativeDirection, CardinalDirection
+from rover.enums import MovementCommand, RotationCommand, CardinalDirection
 
 
 def parse_grid(str_: str) -> Grid:
@@ -79,7 +79,7 @@ def parse_cardinal_direction(str_: str) -> CardinalDirection:
         raise exceptions.InvalidCardinalDirectionInputError(msg)
 
 
-RoverCommand = Union[MovementCommand, RelativeDirection]
+RoverCommand = Union[MovementCommand, RotationCommand]
 
 
 def parse_rover_commands(str_: str) -> List[RoverCommand]:
@@ -89,9 +89,9 @@ def parse_rover_commands(str_: str) -> List[RoverCommand]:
 def _parse_rover_commands(str_: str) -> Generator[RoverCommand, None, None]:
     for char in str_.upper():
         if char == 'L':
-            yield RelativeDirection.L
+            yield RotationCommand.L
         elif char == 'R':
-            yield RelativeDirection.R
+            yield RotationCommand.R
         elif char == 'M':
             yield MovementCommand.M
         else:
