@@ -1,13 +1,13 @@
 class CollisionDetectedError(Exception):
-    def __init__(self, coord):
-        self.coord = coord
+    def __init__(self, coordinate):
+        self.coordinate = coordinate
 
     def __str__(self):
         msg = '{} is not within the grid bounds'
-        return msg.format(self.coord)
+        return msg.format(self.position)
 
     def __repr__(self):
-        return f'CollisionDetectedError({self.coord:s})'
+        return f'CollisionDetectedError({self.coordinate:s})'
 
 
 class InvalidInputError(Exception):

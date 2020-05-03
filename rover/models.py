@@ -60,15 +60,15 @@ class Grid:
 class Rover:
     id: str
     angle: int
-    coord: Coordinate
+    position: Coordinate
 
-    def __init__(self, angle, coord, id=None):
+    def __init__(self, angle, position, id=None):
         if not id:
             id = uuid.uuid4()
 
         self.id = id
         self.angle = angle
-        self.coord = coord
+        self.position = position
 
     @property
     def cardinal_direction(self) -> CardinalDirection:
@@ -79,9 +79,9 @@ class Rover:
 
     def move(self, command: MovementCommand, grid: Grid):
         movement = Movement(angle=self.angle, delta=command.value)
-        new_coord = self.coord + movement
+        new_coord = self.position + movement
 
         if not grid.is_within_bounds(new_coord):
             raise exceptions.CollisionDetectedError(new_coord)
 
-        self.coord = new_coord
+        self.position = new_coord

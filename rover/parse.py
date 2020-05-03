@@ -48,7 +48,7 @@ def parse_rover(str_: str) -> Rover:
         raise exceptions.InvalidRoverInputError(msg) from e
 
     return Rover(
-        coord=Coordinate(x=x, y=y),
+        position=Coordinate(x=x, y=y),
         angle=direction.value
     )
 

@@ -40,7 +40,7 @@ def get_rover_commands():
 
 
 def print_position(rover):
-    msg = f'{rover.coord.x} {rover.coord.y} {rover.cardinal_direction.name}'
+    msg = f'{rover.position.x} {rover.position.y} {rover.cardinal_direction.name}'
     print(green(msg))
 
 

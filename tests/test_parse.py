@@ -37,7 +37,7 @@ class TestParseRover:
 
         assert isinstance(rover, Rover)
         assert rover.angle == 0
-        assert rover.coord == Coordinate(1, 1)
+        assert rover.position == Coordinate(1, 1)
 
     def test_too_many_args(self):
         input_ = '1 1 E 1'
