@@ -13,6 +13,6 @@ Or set up a virtual environment and install dependencies:
 
 ## Commands
 
-Run the cli: `python -m rover`
-Run the test suite: `py.test -vv`
-Run the static type checker: `mypy ./rover`
+- Run the cli: `python -m rover`
+- Run the test suite: `py.test -vv`
+- Run the static type checker: `mypy ./rover`
