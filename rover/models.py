@@ -1,4 +1,5 @@
 import math
+import uuid
 from dataclasses import dataclass
 
 from rover import exceptions
@@ -17,7 +18,7 @@ class Coordinate:
                 y=self.y + other.delta_y
             )
 
-        msg = 'Unsupported operand types for +: {:r} and {:r}'
+        msg = "Unsupported operand types for '+': {!r} and {!r}"
         raise TypeError(msg.format(type(self), type(other)))
 
     def __str__(self):
@@ -48,7 +49,7 @@ class Grid:
     x_min = 0
     y_min = 0
 
-    def is_within_bounds(self, coordinate: Coordinate):
+    def is_within_bounds(self, coordinate: Coordinate) -> bool:
         return (
             self.x_min <= coordinate.x <= self.x_max and
             self.y_min <= coordinate.y <= self.y_max
@@ -60,6 +61,14 @@ class Rover:
     id: str
     angle: int
     coord: Coordinate
+
+    def __init__(self, angle, coord, id=None):
+        if not id:
+            id = uuid.uuid4()
+
+        self.id = id
+        self.angle = angle
+        self.coord = coord
 
     @property
     def cardinal_direction(self) -> CardinalDirection:

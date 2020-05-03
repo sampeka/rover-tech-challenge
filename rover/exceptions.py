@@ -8,3 +8,23 @@ class CollisionDetectedError(Exception):
 
     def __repr__(self):
         return f'CollisionDetectedError({self.coord:s})'
+
+
+class InvalidInputError(Exception):
+    pass
+
+
+class InvalidGridInputError(InvalidInputError):
+    pass
+
+
+class InvalidRoverInputError(InvalidInputError):
+    pass
+
+
+class InvalidCommandInputError(InvalidInputError):
+    pass
+
+
+class InvalidCardinalDirectionInputError(InvalidInputError):
+    pass
