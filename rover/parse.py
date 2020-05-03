@@ -95,5 +95,5 @@ def _parse_rover_commands(str_: str) -> Generator[RoverCommand, None, None]:
         elif char == 'M':
             yield MovementCommand.M
         else:
-            msg = f'{char!r} in {str!r} is not a valid RoverCommand'
+            msg = f'{char!r} in {str_!r} is not a valid RoverCommand'
             raise exceptions.InvalidCommandInputError(msg)
