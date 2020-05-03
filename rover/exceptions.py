@@ -3,7 +3,7 @@ class CollisionDetectedError(Exception):
         self.coord = coord
 
     def __str__(self):
-        msg = 'CollisionDetectedError: {} is not within the grid bounds'
+        msg = '{} is not within the grid bounds'
         return msg.format(self.coord)
 
     def __repr__(self):

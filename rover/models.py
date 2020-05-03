@@ -74,8 +74,8 @@ class Rover:
     def cardinal_direction(self) -> CardinalDirection:
         return CardinalDirection(self.angle)
 
-    def rotate(self, direction: RotationCommand):
-        self.angle = (self.angle - direction.value) % 360
+    def rotate(self, command: RotationCommand):
+        self.angle = (self.angle - command.value) % 360
 
     def move(self, command: MovementCommand, grid: Grid):
         movement = Movement(angle=self.angle, delta=command.value)
