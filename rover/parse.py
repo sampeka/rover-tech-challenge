@@ -15,19 +15,16 @@ def parse_grid(str_: str) -> Grid:
         msg = f'Too few arguments to initialise Grid from input {str_!r}'
         raise exceptions.InvalidGridInputError(msg)
 
-    x_max, y_max = parts
+    raw_x_max, raw_y_max = parts
 
     try:
-        x_max = parse_int(x_max)
-        y_max = parse_int(y_max)
+        x_max = parse_int(raw_x_max)
+        y_max = parse_int(raw_y_max)
     except exceptions.InvalidInputError as e:
         msg = f'Failed to parse grid from input {str_!r}'
         raise exceptions.InvalidGridInputError(msg) from e
 
-    return Grid(
-        x_max=x_max,
-        y_max=y_max
-    )
+    return Grid(x_max=x_max, y_max=y_max)
 
 
 def parse_rover(str_: str) -> Rover:
@@ -40,12 +37,12 @@ def parse_rover(str_: str) -> Rover:
         msg = f'Too few arguments to initialise Rover from input {str_!r}'
         raise exceptions.InvalidRoverInputError(msg)
 
-    x, y, direction = parts
+    raw_x, raw_y, raw_direction = parts
 
     try:
-        x = parse_int(x)
-        y = parse_int(y)
-        direction = parse_cardinal_direction(direction)
+        x = parse_int(raw_x)
+        y = parse_int(raw_y)
+        direction = parse_cardinal_direction(raw_direction)
     except exceptions.InvalidInputError as e:
         msg = f'Failed to parse Rover from input {str_!r}'
         raise exceptions.InvalidRoverInputError(msg) from e
